@@ -7,14 +7,13 @@ class Window(Frame):
 
         self.master = master
 
-        self.init_window()
-
         self.labels = []
         self.entries = []
-
         self.labelEntryDict = {}
 
-    def init_window(self, self.labels, self.entries):
+        self.init_window()
+    
+    def init_window(self):
 
         self.master.title("App ID Filling Out")
         self.pack(fill=BOTH, expand=1)
@@ -22,7 +21,7 @@ class Window(Frame):
         foreground="black",
         background="white"
         )
-        greeting.place(x=10, y= 20)
+        greeting.pack()
         # # Create Labels and Entries
         deviceLbl = Label(text="Enter Device: ", fg='white', bg='black')
         deviceEnt = Entry(fg="black", bg='white', width=30)
@@ -59,12 +58,17 @@ class Window(Frame):
        
         
 
-        for index in range(0,len(labels)):
+        for index in range(0,len(self.labels)):
             self.labelEntryDict[self.labels[index]] = self.entries[index]
 
+        for key, item in self.labelEntryDict.items():
+            key.pack()
+            item.pack()
 
+
+        
         quitButton = Button(self, text="Quit", command=self.client_exit)
-        quitButton.place(x=10,y=365)
+        quitButton.pack()
 
     def client_exit(self):
         exit()
