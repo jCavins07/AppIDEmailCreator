@@ -55,10 +55,13 @@ class Window(Frame):
 		self.entries.append(appID)
 		self.entries.append(deviceEnt)
 		
+		
+		# Creates a label entry dictionary where labels are the key and entry are the item
 		for index in range(0,len(self.labels)):
 			self.labelEntryDict[self.labels[index]] = self.entries[index]
 			
 		for key, item in self.labelEntryDict.items():
+			print(key + " " + item)
 			key.pack()
 			item.pack()
 			
