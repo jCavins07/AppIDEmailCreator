@@ -1,11 +1,16 @@
 from tkinter import *
 
 def writeToFile(entries):
+	appIdFile = open("AppIDFile.txt", "w")
 	for entry in entries:
+		#### Return and dont write to file unless they fill all inputs
 		if entry.get() == "":
 			print("Failed miss entry!!!!")	
-			return
-
+			return 
+		### Now we know every entry has been filled 
+		else:
+			appIdFile.write("- " + entry.get().strip() + "\n")
+			
 class Window(Frame):
 
 	def __init__(self, master = None):
@@ -93,45 +98,3 @@ app = Window(root)
 root.mainloop()
 
 
-
-
-
-
-
-
-
-
-# ########################
-
-# def get_entries():
-#     entryValues = []
-#     for entry in entries:
-#         entryValues.append(entry.get())
-#         # print(entry.get())
-
-#     return entryValues
-
-# getEntryButton = tk.Button(text='Enter', 
-#                         height = 5,
-#                         width=10,
-#                         command=get_entries)
-
-
-# for key, item in labelEntryDict.items():
-#     key.pack(pady=10,padx=10)
-#     item.pack()
-
-# getEntryButton.pack(pady=10,padx=10)
-
-
-
-
-# for entryValue in entryValues:
-#     print(entryValue)
-# window.mainloop()
-
-
-
-# firstStr = "All, Here is the test report for the: "
-
-# header = labels[0] + ' ' + ' App ID'
