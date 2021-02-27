@@ -12,6 +12,7 @@ class Window(Frame):
 		self.labelEntryDict = {}
 		
 		self.init_window()
+
 		
 	def init_window(self):
 	
@@ -23,56 +24,64 @@ class Window(Frame):
 		)
 		greeting.pack()
         # # Create Labels and Entries
-		deviceLbl = Label(text="Enter Device: ", fg='white', bg='black')
+		deviceLbl = Label(text="Enter Device: ", fg='black', bg='white')
 		deviceEnt = Entry(fg="black", bg='white', width=30)
-		appIDLab = Label(text="Enter App ID: ", fg='white', bg='black')
+		appIDLab = Label(text="Enter App ID: ", fg='black', bg='white')
 		appID = Entry(fg="black", bg='white', width=30)
-		pnLbl = Label(text="Enter Partnumber: ", fg='white', bg='black')
+		pnLbl = Label(text="Enter Partnumber: ", fg='black', bg='white')
 		pnEnt = Entry(fg="black", bg='white', width=30)
-		radioLab = Label(text="Enter Radio: ", fg='white', bg='black')
+		radioLab = Label(text="Enter Radio: ", fg='black', bg='white')
 		radio = Entry(fg="black", bg='white', width=30)
 		fw = Entry(fg='black', bg='white', width=30)
-		fwLab = Label(text="Enter Firmware: ", fg='white', bg='black')
+		fwLab = Label(text="Enter Firmware: ", fg='black', bg='white')
 		prevFw = Entry(fg="black", bg='white', width=30)
-		prevFwLab = Label(text="Enter Previous Firmware: ", fg='white', bg='black')
+		prevFwLab = Label(text="Enter Previous Firmware: ", fg='black', bg='white')
 		OTACnfg = Entry(fg="black", bg='white', width=30)
 		OTACnfg.insert(0,"50.44")
-		OTACnfgLab = Label(text="Enter OTAConfig: ", fg='white', bg='black')
+		OTACnfgLab = Label(text="Enter OTAConfig: ", fg='black', bg='white')
 		
-		self.labels.append(OTACnfgLab)
-		self.labels.append(prevFwLab)
-		self.labels.append(fwLab)
-		self.labels.append(radioLab)
-		self.labels.append(pnLbl)
-		self.labels.append(appIDLab)
 		self.labels.append(deviceLbl)
+		self.labels.append(radioLab)
+		self.labels.append(appIDLab)
+		self.labels.append(pnLbl)
+		self.labels.append(fwLab)
+		self.labels.append(prevFwLab)
+		self.labels.append(OTACnfgLab)
 		
-		self.entries.append(OTACnfg)
-		self.entries.append(prevFw)
-		self.entries.append(fw)
-		self.entries.append(radio)
-		self.entries.append(pnEnt)
-		self.entries.append(appID)
 		self.entries.append(deviceEnt)
+		self.entries.append(radio)
+		self.entries.append(appID)
+		self.entries.append(pnEnt)
+		self.entries.append(fw)
+		self.entries.append(prevFw)
+		self.entries.append(OTACnfg)
 		
-		
+		enterBttn = Button(self, text="Enter ", command=self.myClick)
+		enterBttn.pack()
 		# Creates a label entry dictionary where labels are the key and entry are the item
 		for index in range(0,len(self.labels)):
+			# self.labelEntryDict[self.labels[index].text] = self.entries[index]
 			self.labelEntryDict[self.labels[index]] = self.entries[index]
-			
 		for key, item in self.labelEntryDict.items():
-			print(key + " " + item)
 			key.pack()
 			item.pack()
-			
+
 		quitButton = Button(self, text="Quit", command=self.client_exit)
 		quitButton.pack()
+		
+			
+
+	def myClick(self):
+		for key, item in self.labelEntryDict.items():
+			print(key.cget("text") + " " + item.get())
+		print("********************************\n")
+		print("********************************\n")
+			
 		
 	def client_exit(self):
 		exit()
 		
 root = Tk()
-root.geometry("400x400")
 app = Window(root)
 
 root.mainloop()
