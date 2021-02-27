@@ -1,5 +1,11 @@
 from tkinter import *
 
+def writeToFile(entries):
+	for entry in entries:
+		if entry.get() == "":
+			print("Failed miss entry!!!!")	
+			return
+
 class Window(Frame):
 
 	def __init__(self, master = None):
@@ -68,16 +74,16 @@ class Window(Frame):
 
 		quitButton = Button(self, text="Quit", command=self.client_exit)
 		quitButton.pack()
-		
-			
+				
 
 	def myClick(self):
 		for key, item in self.labelEntryDict.items():
 			print(key.cget("text") + " " + item.get())
 		print("********************************\n")
 		print("********************************\n")
+		writeToFile(self.entries)
 			
-		
+
 	def client_exit(self):
 		exit()
 		
