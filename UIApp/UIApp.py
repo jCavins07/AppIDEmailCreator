@@ -34,22 +34,25 @@ class Window(Frame):
 		background="white"
 		)
 		greeting.pack()
-        # # Create Labels and Entries
-		deviceLbl = Label(text="Enter Device: ", fg='black', bg='white')
+		entryOrder = ['device: ', 'radio: ' , 'App ID: ', 'firmware: ', 'previous firmware: ', 'part number: ', 'Ate passnumber: ', 'OTA Config: ']
+		# # Create Labels and Entries
+		deviceLbl = Label(text=entryOrder[0], fg='black', bg='white')
 		deviceEnt = Entry(fg="black", bg='white', width=30)
-		appIDLab = Label(text="Enter App ID: ", fg='black', bg='white')
+		appIDLab = Label(text=entryOrder[2], fg='black', bg='white')
 		appID = Entry(fg="black", bg='white', width=30)
-		pnLbl = Label(text="Enter Partnumber: ", fg='black', bg='white')
+		pnLbl = Label(text=entryOrder[5], fg='black', bg='white')
 		pnEnt = Entry(fg="black", bg='white', width=30)
-		radioLab = Label(text="Enter Radio: ", fg='black', bg='white')
+		radioLab = Label(text=entryOrder[1], fg='black', bg='white')
 		radio = Entry(fg="black", bg='white', width=30)
 		fw = Entry(fg='black', bg='white', width=30)
-		fwLab = Label(text="Enter Firmware: ", fg='black', bg='white')
+		fwLab = Label(text=entryOrder[3], fg='black', bg='white')
 		prevFw = Entry(fg="black", bg='white', width=30)
-		prevFwLab = Label(text="Enter Previous Firmware: ", fg='black', bg='white')
+		prevFwLab = Label(text=entryOrder[4], fg='black', bg='white')
+		atePassNumberLbl = Label(text=entryOrder[6], fg='black', bg='white')
+		atePassNumberEnt = Entry(fg="black", bg='white', width=30)
 		OTACnfg = Entry(fg="black", bg='white', width=30)
 		OTACnfg.insert(0,"50.44")
-		OTACnfgLab = Label(text="Enter OTAConfig: ", fg='black', bg='white')
+		OTACnfgLab = Label(text=entryOrder[7], fg='black', bg='white')
 		
 		self.labels.append(deviceLbl)
 		self.labels.append(radioLab)
@@ -57,6 +60,7 @@ class Window(Frame):
 		self.labels.append(pnLbl)
 		self.labels.append(fwLab)
 		self.labels.append(prevFwLab)
+		self.labels.append(atePassNumberLbl)
 		self.labels.append(OTACnfgLab)
 		
 		self.entries.append(deviceEnt)
@@ -65,25 +69,29 @@ class Window(Frame):
 		self.entries.append(pnEnt)
 		self.entries.append(fw)
 		self.entries.append(prevFw)
+		self.entries.append(atePassNumberEnt)
 		self.entries.append(OTACnfg)
 		
 		enterBttn = Button(self, text="Enter ", command=self.myClick)
 		enterBttn.pack()
+		
+		
 		# Creates a label entry dictionary where labels are the key and entry are the item
-		for index in range(0,len(self.labels)):
+		for index in range(0,len(entryOrder)):
 			# self.labelEntryDict[self.labels[index].text] = self.entries[index]
-			self.labelEntryDict[self.labels[index]] = self.entries[index]
-		for key, item in self.labelEntryDict.items():
-			key.pack()
-			item.pack()
-
+			self.labelEntryDict[self.labels[index].cget('text')] = self.entries[index]
+		for index in range(0, len(entryOrder)):
+			self.labels[index].pack()
+			if entryOrder[index] in self.labelEntryDict.keys():
+				self.labelEntryDict[entryOrder[index]].pack()
+				# pass
 		quitButton = Button(self, text="Quit", command=self.client_exit)
 		quitButton.pack()
 				
 
 	def myClick(self):
 		for key, item in self.labelEntryDict.items():
-			print(key.cget("text") + " " + item.get())
+			print(key + " " + item.get())
 		print("********************************\n")
 		print("********************************\n")
 		writeToFile(self.entries)

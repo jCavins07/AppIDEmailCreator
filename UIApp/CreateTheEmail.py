@@ -1,21 +1,46 @@
 import os, sys
+import re
 
-device = input("What kind of device is it: ")
+file = 'AppIDFile.txt'
+path = 'C:\\Users\\labuser\\Documents\\GitHub\\AppIDEmailCreator\\UIApp'
+
+filePath = open(path + '\\' + file)
+
+# fileStr= filePath.read()
+
+# print(fileStr)
+
+
+# device = input("What kind of device is it: ")
+deviceStr = filePath.readline().strip()
+device = deviceStr[2:]
 print("The device is " + str(device))
-radio = input("What kind of radio: ")
+# radio = input("What kind of radio: ")
+radioStr = filePath.readline().strip()
+radio = radioStr[2:]
 print("The radio is " + str(radio))
-appID = input("What App ID are you working with: ")
+# appID = input("What App ID are you working with: ")
+appIDStr = filePath.readline().strip()
+appID = appIDStr[2:]
 print("You are working with " + str(appID))
-firmware = input("What is the firmware: ")
-print("The firmware you put is " + str(firmware))
-partNumber = input("What is the part number: ")
+# partNumber = input("What is the part number: ")
+partNumberStr = filePath.readline().strip()
+partNumber = partNumberStr[2:]
 print("The partnumber is " + str(partNumber))
-prevFirmware = input("What was the previous firmware: ")
+# firmware = input("What is the firmware: ")
+firmwareStr = filePath.readline().strip()
+firmware = firmwareStr[2:]
+print("The firmware you put is " + str(firmware))
+# prevFirmware = input("What was the previous firmware: ")
+prevFirmwareStr = filePath.readline().strip()
+prevFirmware = prevFirmwareStr[2:]
 print("The previous firmware was " + str(prevFirmware)) 
-atePass = input("What is the ATE pass number: ")
+# atePass = input("What is the ATE pass number: ")
+atePassStr = filePath.readline().strip()
+atePass = atePassStr[2:]
 print("The ate pass number is " + str(atePass))
 
-otaConfigStr = "50.44"
+otaConfigStr = filePath.readline().strip()
 updateFwStr = firmware[:-1] + 'z'
 print("The update firmware is " + updateFwStr + "\n")
 
