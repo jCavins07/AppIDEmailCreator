@@ -23,7 +23,10 @@ print("The radio is " + str(radio))
 appIDStr = filePath.readline().strip()
 appID = appIDStr[2:]
 print("You are working with " + str(appID))
-# partNumber = input("What is the part number: ")
+prevFirmwareStr = filePath.readline().strip()
+prevFirmware = prevFirmwareStr[2:]
+print("The previous firmware was " + str(prevFirmware)) 
+
 partNumberStr = filePath.readline().strip()
 partNumber = partNumberStr[2:]
 print("The partnumber is " + str(partNumber))
@@ -31,9 +34,6 @@ print("The partnumber is " + str(partNumber))
 firmwareStr = filePath.readline().strip()
 firmware = firmwareStr[2:]
 print("The firmware you put is " + str(firmware))
-# prevFirmware = input("What was the previous firmware: ")
-prevFirmwareStr = filePath.readline().strip()
-prevFirmware = prevFirmwareStr[2:]
 print("The previous firmware was " + str(prevFirmware)) 
 # atePass = input("What is the ATE pass number: ")
 atePassStr = filePath.readline().strip()
@@ -94,7 +94,7 @@ notesStr += fileFolder
 
 fullString += notesStr
 
-migratingFwStr = "Parameter Migration:\n\n\n-\t have copied all the parameter migration files into the shared folder between" + prevFirmware + " -> " + firmware + " haven't seen any issues.\n\n"
+migratingFwStr = "\n\nParameter Migration:\n\n\n-\t have copied all the parameter migration files into the shared folder between" + prevFirmware + " -> " + firmware + " haven't seen any issues.\n\n"
 
 fullString += migratingFwStr
 
