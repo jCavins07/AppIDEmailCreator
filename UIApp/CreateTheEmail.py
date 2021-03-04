@@ -83,7 +83,7 @@ notesStr += fileFolder
 
 fullString += notesStr
 
-migratingFwStr = "\n\nParameter Migration:\n\n\n-\t have copied all the parameter migration files into the shared folder between" + prevFirmware + " -> " + firmware + " haven't seen any issues.\n\n"
+migratingFwStr = "\n\nParameter Migration:\n\n\n-\t have copied all the parameter migration files into the shared folder between " + prevFirmware + " -> " + firmware + " haven't seen any issues.\n\n"
 
 fullString += migratingFwStr
 
