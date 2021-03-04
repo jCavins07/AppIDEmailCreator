@@ -2,46 +2,33 @@ import os, sys
 import re
 
 file = 'AppIDFile.txt'
-# path = 'C:\\Users\\labuser\\Documents\\GitHub\\AppIDEmailCreator\\UIApp'
-path = '~/Documents/AppIDEmailCreator/UIApp/'
+path = 'C:\\Users\\labuser\\Documents\\GitHub\\AppIDEmailCreator\\UIApp'
 
-# filePath = open(path + '\\' + file)
-
-filePath = os.path.expanduser(path + file)
-# fileStr= filePath.read()
-
-# print(fileStr)
+filePath = open(path + '\\' + file, 'r')
 
 
-# device = input("What kind of device is it: ")
 deviceStr = filePath.readline().strip()
 device = deviceStr[2:]
 print("The device is " + str(device))
-# radio = input("What kind of radio: ")
 radioStr = filePath.readline().strip()
 radio = radioStr[2:]
 print("The radio is " + str(radio))
-# appID = input("What App ID are you working with: ")
 appIDStr = filePath.readline().strip()
 appID = appIDStr[2:]
 print("You are working with " + str(appID))
 prevFirmwareStr = filePath.readline().strip()
 prevFirmware = prevFirmwareStr[2:]
 print("The previous firmware was " + str(prevFirmware)) 
-
 partNumberStr = filePath.readline().strip()
 partNumber = partNumberStr[2:]
 print("The partnumber is " + str(partNumber))
-# firmware = input("What is the firmware: ")
 firmwareStr = filePath.readline().strip()
 firmware = firmwareStr[2:]
 print("The firmware you put is " + str(firmware))
 print("The previous firmware was " + str(prevFirmware)) 
-# atePass = input("What is the ATE pass number: ")
 atePassStr = filePath.readline().strip()
 atePass = atePassStr[2:]
 print("The ate pass number is " + str(atePass))
-
 otaConfigStr = filePath.readline().strip()
 updateFwStr = firmware[:-1] + 'z'
 print("The update firmware is " + updateFwStr + "\n")
